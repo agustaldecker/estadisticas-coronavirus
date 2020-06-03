@@ -1,0 +1,68 @@
+<h2>Estadísticas por País</h2>
+
+<div>
+    <form class="form-inline my-2 my-lg-0"  (ngSubmit)="getStatistics(searchName)">
+        <select class = "form-control" name = "search"  [(ngModel)] = "searchName" title = "Selecciona un país">
+            <option *ngFor = "let countryName of countryList" >{{countryName.Country}}</option> 
+        </select>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+      </form>
+</div>
+
+<div  *ngIf="lastDay">
+    <ul>
+        <li>
+            <h3>{{lastDay.Country}}</h3>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Cantidad</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">Confirmados</th>
+                    <td>{{lastDay.Confirmed | number:'':'es-AR'}}</td>
+                </tr>                    
+                <tr>
+                    <th scope="row">Muertes</th>
+                    <td>{{lastDay.Deaths | number:'':'es-AR'}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Recuperados</th>
+                    <td>{{lastDay.Recovered | number:'':'es-AR'}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Activos</th>
+                    <td>{{lastDay.Active | number:'':'es-AR'}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Fecha</th>
+                    <td>{{lastDay.date.dayOfMonth}}/{{lastDay.date.monthValue}}/{{lastDay.date.year}}</td>
+                </tr>
+                
+                </tbody>
+            </table>
+        </li>
+    </ul>
+    
+    
+    
+</div>
+
+<div>
+    <form class="form-inline my-2 my-lg-0"  (ngSubmit)="updateChart()">
+    <select class = "form-control" name = "search"  [(ngModel)] = "propertyDisplay">
+        <option>Confirmados</option> 
+        <option>Muertos</option>
+        <option>Recuperados</option>
+        <option>Activos</option>
+    </select>
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Seleccionar variable</button>
+    </form>
+</div>
+
+<div>
+<canvas id="canvass"></canvas>
+</div>

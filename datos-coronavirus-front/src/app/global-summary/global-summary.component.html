@@ -1,0 +1,37 @@
+<h2>Estadísticas globales</h2>
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Estado</th>
+        <th scope="col">Cantidad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Nuevos Confirmados</th>
+        <td>{{global.newConfirmed | number:'':'es-AR'}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Total Confirmados</th>
+        <td>{{global.totalConfirmed | number:'':'es-AR'}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Nuevas Muertes</th>
+        <td>{{global.newDeaths | number:'':'es-AR'}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Total Muertes</th>
+        <td>{{global.totalDeaths | number:'':'es-AR'}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Nuevos Recuperados</th>
+        <td>{{global.newRecovered | number:'':'es-AR'}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Total Recuperados</th>
+        <td>{{global.totalRecovered | number:'':'es-AR'}}</td>
+      </tr>
+     
+    </tbody>
+  </table>

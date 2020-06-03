@@ -1,0 +1,114 @@
+<h2>Estadísticas por país</h2>
+
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Ordernar por
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <input class="form-control" id="myInput" type="text" placeholder="Search..">
+        <a class="dropdown-item" (click)="sortByOrdenAlfabetico()">Orden Alfabetico</a>
+        <a class="dropdown-item" (click)="sortByNewConfirmed()">Nuevos Confirmados</a>
+        <a class="dropdown-item" (click)="sortByTotalConfirmed()">Total Confirmados</a>
+        <a class="dropdown-item" (click)="sortByNewDeaths()">Nuevos Muertos</a>
+        <a class="dropdown-item" (click)="sortByTotalDeaths()">Total Muertos</a>
+        <a class="dropdown-item" (click)="sortByNewRecovered()">Nuevos Recuperados</a>
+        <a class="dropdown-item" (click)="sortByTotalRecovered()">Total Recuperados</a>
+      
+    </div>
+</div>
+
+  
+<div>
+    <form class="form-inline my-2 my-lg-0"  (ngSubmit)="searchCountry(selectedCountry)">
+        <select class = "form-control" name = "search"  [(ngModel)] = "selectedCountry" title = "Selecciona un país">
+            <option *ngFor = "let countryName of countryList" >{{countryName.Country}}</option> 
+        </select>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+      </form>
+</div>
+
+<div [hidden]="!search" *ngIf="search === true">
+    <ul>
+        <li>
+            <h3>{{countrySearched.Country}}</h3>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Cantidad</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">Nuevos Confirmados</th>
+                    <td>{{countrySearched.NewConfirmed | number:'':'es-AR'}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Total Confirmados</th>
+                    <td>{{countrySearched.TotalConfirmed | number:'':'es-AR'}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Nuevas Muertes</th>
+                    <td>{{countrySearched.NewDeaths | number:'':'es-AR'}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Total Muertes</th>
+                    <td>{{countrySearched.TotalDeaths | number:'':'es-AR'}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Nuevos Recuperados</th>
+                    <td>{{countrySearched.NewRecovered | number:'':'es-AR'}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Total Recuperados</th>
+                    <td>{{countrySearched.TotalRecovered | number:'':'es-AR'}}</td>
+                </tr>
+                
+                </tbody>
+            </table>
+        </li>
+    </ul>
+</div>
+
+<div [hidden]="search">
+    <ul>
+        <li *ngFor= "let country of countryList">
+            <h3>{{countryList.indexOf(country) + 1}} {{country.Country}}</h3>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Cantidad</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">Nuevos Confirmados</th>
+                    <td>{{country.NewConfirmed | number:'':'es-AR'}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Total Confirmados</th>
+                    <td>{{country.TotalConfirmed | number:'':'es-AR'}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Nuevas Muertes</th>
+                    <td>{{country.NewDeaths | number:'':'es-AR'}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Total Muertes</th>
+                    <td>{{country.TotalDeaths | number:'':'es-AR'}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Nuevos Recuperados</th>
+                    <td>{{country.NewRecovered | number:'':'es-AR'}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Total Recuperados</th>
+                    <td>{{country.TotalRecovered | number:'':'es-AR'}}</td>
+                </tr>
+                
+                </tbody>
+            </table>
+        </li>
+    </ul>
+</div>
