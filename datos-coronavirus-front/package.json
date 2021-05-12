@@ -22,7 +22,7 @@
     "@types/chart.js": "^2.9.21",
     "bootstrap": "^4.4.1",
     "bootstrap-select": "^1.13.17",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
     "rxjs": "~6.5.4",
